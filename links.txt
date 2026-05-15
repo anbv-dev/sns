@@ -1,5 +1,17 @@
-E1: time shifting, reversal and scaling - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/time-shifting-r-s.txt
-E2: periodic square wave from it's Fourier series expansion - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/FS-square-wave.txt
-E3: periodic Triangular waveform - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/Triangular-wave.txt
-E4: convolution - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/Convolution.txt
-E5: Fourier Transform of a continuous non-periodic signal (rectangular pulse) - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/FT-c-np.txt
+E2: time shifting, reversal and scaling - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/time-shifting-r-s.txt
+
+E3: periodic square wave from it's Fourier series expansion - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/FS-square-wave.txt
+
+E4: periodic Triangular waveform - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/Triangular-wave.txt
+
+E5: convolution - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/Convolution.txt
+
+E6: Fourier Transform of a continuous non-periodic signal (rectangular pulse) - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/FT-c-np.txt
+
+E7: inverse Fourier Transform of a continuous signal defined in frequency domain - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/inverseFt.txt
+
+E8: Discrete Time Fourier Transform - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/discrete-FT.txt
+
+E9: symbolic computation - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/symbolic-computation.txt
+
+E10: z-transform - https://raw.githubusercontent.com/anbv-dev/sns/refs/heads/main/z-transform.txt
