@@ -1,0 +1,45 @@
+%Objective: To generate a periodic square wave from it's Fourier series expansion.
+
+clc;
+clear;
+close all;
+
+% Number of terms to be kept in Fourier series expansion
+NumberOfTerms = 150;
+k = -NumberOfTerms:1:NumberOfTerms;
+T = 4; % Time period of the square wave form
+omega = 2*pi/T;
+
+%Fourier series coefficients
+a = sin(k*omega)./(k*omega);
+
+%zeroth coefficient being set explicitly
+a(k==0) = 2/T;
+
+% Plot of the spectral content
+figure;
+stem(k,a);
+axis([min(k) max(k) 2*min(a) 2*max(a)]);
+grid on
+title('Fourier Series Coefficients')
+xlabel('k')
+ylabel('a(k)')
+
+% time duration for which signal is being generated
+NumberOfSamplesPerT = 10;
+t = -4*T:1/NumberOfSamplesPerT:4*T;
+
+% Computation of the generated square wave form
+x = zeros(size(t));
+for ind = 1:length(k)
+x = x + a(ind)*exp(1i*k(ind)*omega*t);
+end
+
+% Plot of the generated square wave form
+figure;
+plot(t,real(x))
+axis([min(t) max(t) -2 2]);
+grid on
+title('Square Waveform')
+xlabel('t')
+ylabel('x(t)')

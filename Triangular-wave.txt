@@ -1,0 +1,56 @@
+%Objective: To generate a periodic Triangular waveform.
+clc;
+clear;
+
+%scale factor should be varied and observed
+
+T =4; % Time period of the square wave form
+omega = 2*pi/T;
+
+
+
+% Number of terms to be kept in Fourier series expansion
+NumberOfTerms = 100;
+k = -NumberOfTerms:1:NumberOfTerms;
+
+%Fourier series coefficients
+%a = (sin(k*omega)./(k*omega))./(1i*k);
+a = (sin(k*omega)./(k*omega)).^2;
+
+%zeroth coefficient being set explicitly
+a(k==0) = 0; %T1/T;
+
+% Plot of the spectral content
+figure;
+ 
+stem(k,abs(a));
+axis([min(k) max(k) 1.1*min(abs(a)) 1.1*max(abs(a))]);
+grid on
+title('Fourier Series Coefficients (Magnitude)')
+xlabel('k')
+ylabel('a(k)')
+
+
+% time duration for which signal is being generated
+NumberOfSampesPerT = 100;
+t = 0:T/NumberOfSampesPerT:4*T;
+
+% Computation of the generated Triangular wave form
+x = zeros(size(t));
+for ind = 1:length(k)
+    x = x + a(ind)*exp(1i*k(ind)*omega*t);
+end
+x = abs(x);
+
+% Plot of the generated Triangular wave form
+figure;
+plot(t,x)
+axis([min(t) max(t) 1.5*min(x) 1.5*max(x)]);
+grid on
+title('Triangular Waveform')
+xlabel('t')
+ylabel('x(t)')
+
+
+
+

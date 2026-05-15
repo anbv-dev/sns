@@ -1,0 +1,81 @@
+%Objective: To compute convolution both in continous and discrete domain
+
+clc
+clear all;
+close all;
+
+% Given signals
+t = -5:0.01:5;
+x = zeros(size(t));
+x(t >= -2) = t(t >= -2);
+x(t > 2) = 0.0;
+h = zeros(size(t));
+h(t >= -1) = 2.0;
+h(t > 1) = 0.0;
+
+% Convolution
+y = conv(x, h)*0.01 % Scaling by the time step
+
+% Time vector for the result
+t_conv = linspace(2*t(1), 2*t(end), length(y));
+
+% Plotting
+subplot(3,1,1);
+plot(t, x);
+title('x(t)');
+xlabel('Time');
+ylabel('Amplitude');
+subplot(3,1,2);
+plot(t, h);
+title('h(t)');
+xlabel('Time');
+ylabel('Amplitude');
+subplot(3,1,3);
+plot(t_conv, y);
+title('Convolution: y(t) = x(t) * h(t)');
+xlabel('Time');
+ylabel('Amplitude');
+
+%%%%%%%%%%% discrete signal code %%%%%%%%%%%%%%%%%%%%%%%%
+
+clear all
+
+% definition of the input signal
+n_x = -3:1:4;
+x = [4 3 2 1 1 2 3 4];
+
+% plot of the input signal
+figure;
+subplot(3,1,1);
+stem(n_x,x)
+axis([-7 7 0 max(x)]);
+grid on
+title('input signal x[n]')
+xlabel('n')
+ylabel('x[n]')
+
+% definition of unit impules response
+n_h = -1:1:2;
+h = [4 3 2 1];
+
+% plot of the unit impulse response
+subplot(3,1,2);
+stem(n_h,h)
+axis([-7 7 0 max(h)]);
+grid on
+title('impulse response h[n]')
+xlabel('n')
+ylabel('h[n]')
+
+% computation of output signal based on convolution
+n_y = n_x(1)+n_h(1):1: n_x(end)+n_h(end);
+y = conv(x,h);
+
+% plot of the output signal
+subplot(3,1,3);
+stem(n_y,y)
+axis([-7 7 0 max(y)]);
+grid on
+title('output signal y[n]')
+xlabel('n')
+ylabel('y[n]')
