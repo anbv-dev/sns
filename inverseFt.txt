@@ -1,67 +1,49 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2870
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;}
-{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red0\green0\blue0;
-}
-{\*\expandedcolortbl;;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
-}
-\paperw11900\paperh16840\margl1440\margr1440\vieww14500\viewh7860\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+%Objective: To compute the inverse Fourier Transform of a continuous signal defined in frequency domain.
+%scale factor should be varied and observed
 
-\f0\fs20 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 %Objective: To compute the inverse Fourier Transform of a continuous signal defined in frequency domain. 
-\f1\fs24 \cf0 \cb1 \strokec4 \
-\pard\pardeftab720\partightenfactor0
-\cf0 %scale factor should be varied and observed\
-\
-T1 = 10; % time duration of the pulse being 1\
-\
-% time duration for which signal is being generated\
-%NumberOfSampesPerT = 100;\
-\
-% sinc function in frequency domain with the cycles to be considered\
-\
-omega = -T1: 0.1: T1;\
-X_omega = sin(omega*T1)./(omega*T1);\
-X_omega(omega==0) = 1;\
-\
-% parameters for numerical integration to compute Fourier Transform\
-domega = 0.1;\
-\
-%defintion of the range of values for the t and x(t)\
-t = -T1:0.1:T1;\
-x = zeros(size(t));\
-\
-%computing the inverse Fourier transform\
-for ind = 1:length(omega)\
-\'a0 \'a0 x = x + X_omega(ind)*exp(1i*omega(ind)*t)*domega / (2*pi);\
-end\
-\
-% In this example, x(t) is a real function. However, there might\
-% be small values of imaginary part, we explicitly get rid of them here\
-x = real(x);\
-\
-% Plot of the time domain signal\
-figure;\
-\
-subplot(1,2,1)\
-plot(omega,X_omega, 'k');\
-%axis([min(omega) max(omega) 1.1*min(X_omega) 1.1*max(X_omega)]);\
-grid on\
-title('Original Signal')\
-xlabel('\\omega')\
-ylabel('x(\\omega)')\
-\
-\
-subplot(1,2,2)\
-plot(t,x,'r');\
-axis([1.2*min(t) 1.2*max(t) 1.1*min(x) 1.1*max(x)]);\
-grid on\
-title('Inverse Fourier Transform')\
-xlabel('t')\
-ylabel('x(t)')\
-\
-\pard\pardeftab720\partightenfactor0
+T1 = 10; % time duration of the pulse being 1
 
-\f0\fs20 \cf2 \cb3 \strokec2 \
-}
+% time duration for which signal is being generated
+%NumberOfSampesPerT = 100;
+
+% sinc function in frequency domain with the cycles to be considered
+
+omega = -T1: 0.1: T1;
+X_omega = sin(omega*T1)./(omega*T1);
+X_omega(omega==0) = 1;
+
+% parameters for numerical integration to compute Fourier Transform
+domega = 0.1;
+
+%defintion of the range of values for the t and x(t)
+t = -T1:0.1:T1;
+x = zeros(size(t));
+
+%computing the inverse Fourier transform
+for ind = 1:length(omega)
+    x = x + X_omega(ind)*exp(1i*omega(ind)*t)*domega / (2*pi);
+end
+
+% In this example, x(t) is a real function. However, there might
+% be small values of imaginary part, we explicitly get rid of them here
+x = real(x);
+
+% Plot of the time domain signal
+figure;
+
+subplot(1,2,1)
+plot(omega,X_omega, 'k');
+%axis([min(omega) max(omega) 1.1*min(X_omega) 1.1*max(X_omega)]);
+grid on
+title('Original Signal')
+xlabel('\omega')
+ylabel('x(\omega)')
+
+
+subplot(1,2,2)
+plot(t,x,'r');
+axis([1.2*min(t) 1.2*max(t) 1.1*min(x) 1.1*max(x)]);
+grid on
+title('Inverse Fourier Transform')
+xlabel('t')
+ylabel('x(t)')
