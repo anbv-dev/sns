@@ -1,0 +1,38 @@
+% Objective: To perform symbolic computation in MATLAB
+
+clc;
+clear all;
+close all;
+
+
+syms x;  % Define symbolic variable x
+
+% Define a new mathematical expression
+expr = (x^2 - 3*x + 2) / (x^3 + x - 1);
+
+% Find the indefinite integral of the expression
+F = int(expr);
+disp(horzcat('The integration of ', string(expr), ' is:'));
+disp(F);
+
+% Compute differentiation of the expression
+F = diff(expr);
+disp(horzcat('The differentiation of ', string(expr), ' is:'));
+disp(F);
+
+% Compute partial fraction decomposition of a rational function
+ 
+num = x^2 + 2*x + 1;
+den = x^2 - 2*x + 3;
+expr = num / den;
+F = partfrac(expr);
+disp(horzcat('The partial fraction of ', string(expr), ' is:'));
+disp(F);
+
+% Compute poles and zeros of the transfer function
+P = poles(expr);
+Z = solve(expr);
+disp(horzcat('The poles of ', string(F), ' are:'));
+disp(P);
+disp(horzcat('The zeros of ', string(F), ' are:'));
+disp(Z);

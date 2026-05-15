@@ -1,0 +1,20 @@
+syms n;
+
+% Define the symbolic expression
+x = (1/2)^n * cos(4*n);
+
+% Calculate the Z-transform
+X = ztrans(x);
+
+% Display the symbolic expression and its Z-transform
+disp('Symbolic Expression:');
+disp(x);
+disp('Z-transform:');
+disp(X);
+
+% Calculate the inverse Z-transform
+x_inverse = iztrans(X);
+
+% Display the regenerated symbolic expression
+disp('Regenerated Symbolic Expression by Inverse Z-transform:');
+disp(x_inverse);
